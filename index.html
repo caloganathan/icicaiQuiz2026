@@ -23,14 +23,21 @@
     <div id="progress-fill" class="progress__fill"></div>
   </div>
 
+  <!-- Sound toggle indicator (host only; press M) -->
+  <div id="sound-indicator" class="sound-indicator" aria-hidden="true" title="Press M to mute/unmute">
+    <span id="sound-icon">♪</span>
+  </div>
+
   <main id="stage" class="stage">
 
     <!-- ============================ SPLASH ============================ -->
     <section id="screen-splash" class="screen screen--splash is-active">
       <div class="splash">
-        <img src="assets/img/icai-logo.png" alt="ICAI logo" class="splash__logo"
-             onerror="this.style.display='none';document.getElementById('splash-logo-fallback').style.display='flex';" />
-        <div id="splash-logo-fallback" class="logo-fallback" style="display:none;">ICAI</div>
+        <div class="medallion">
+          <img src="assets/img/icai-logo.png" alt="ICAI logo" class="medallion__img"
+               onerror="this.style.display='none';this.parentNode.classList.add('medallion--fallback');" />
+          <span class="medallion__fallback">ICAI</span>
+        </div>
 
         <h1 class="splash__title">Chartered Accountants' Day 2026</h1>
         <p class="splash__subtitle">The Quiz</p>
@@ -42,14 +49,24 @@
         </p>
 
         <p class="splash__prompt"><kbd>Space</kbd> to begin</p>
+        <p class="splash__howto">
+          Click an option (or press <kbd>A</kbd>–<kbd>D</kbd>) to lock in the answer &amp; score it
+        </p>
       </div>
     </section>
 
     <!-- ============================ QUESTION ============================ -->
     <section id="screen-question" class="screen screen--question">
       <header class="q-header">
-        <span id="q-category" class="q-category">Category</span>
-        <span id="q-counter" class="q-counter">Question 1 of 30</span>
+        <div class="q-header__left">
+          <span id="q-category" class="q-category">Category</span>
+          <span id="q-difficulty" class="q-difficulty">Medium</span>
+        </div>
+        <div class="q-header__right">
+          <span id="q-score" class="q-score">Score 0</span>
+          <span id="q-streak" class="q-streak" hidden>🔥 0</span>
+          <span id="q-counter" class="q-counter">Question 1 of 30</span>
+        </div>
       </header>
 
       <div class="q-body">
@@ -59,31 +76,42 @@
           <!-- option cards injected by quiz-engine.js -->
         </ul>
 
-        <div id="q-explanation" class="explanation" hidden>
+        <div id="q-feedback" class="feedback" hidden>
+          <div id="q-verdict" class="verdict"><span id="q-verdict-text">Correct!</span></div>
           <p id="q-explanation-text" class="explanation__text"></p>
           <p id="q-source" class="explanation__source"></p>
         </div>
       </div>
 
       <footer class="q-footer">
-        <span id="q-hint" class="q-hint"><kbd>Space</kbd> reveal answer&nbsp; · &nbsp;<kbd>←</kbd> <kbd>→</kbd> navigate</span>
+        <span class="q-hint">
+          <kbd>A</kbd>–<kbd>D</kbd> lock answer&nbsp; · &nbsp;<kbd>Space</kbd> reveal&nbsp; · &nbsp;<kbd>→</kbd> next&nbsp; · &nbsp;<kbd>←</kbd> back
+        </span>
       </footer>
     </section>
 
     <!-- ============================ CLOSING ============================ -->
     <section id="screen-closing" class="screen screen--closing">
       <div class="splash">
-        <img src="assets/img/icai-logo.png" alt="ICAI logo" class="splash__logo"
-             onerror="this.style.display='none';document.getElementById('closing-logo-fallback').style.display='flex';" />
-        <div id="closing-logo-fallback" class="logo-fallback" style="display:none;">ICAI</div>
+        <div class="medallion">
+          <img src="assets/img/icai-logo.png" alt="ICAI logo" class="medallion__img"
+               onerror="this.style.display='none';this.parentNode.classList.add('medallion--fallback');" />
+          <span class="medallion__fallback">ICAI</span>
+        </div>
 
-        <h1 class="splash__title">Thank You</h1>
-        <p class="splash__subtitle">Chartered Accountants' Day 2026</p>
+        <p id="closing-rank" class="closing-rank">Well played</p>
+        <div id="closing-scoreline" class="closing-scoreline">
+          <span id="closing-score" class="closing-score">0</span>
+          <span class="closing-score-of">of</span>
+          <span id="closing-max" class="closing-score-max">0</span>
+          <span class="closing-score-pts">points</span>
+        </div>
+        <p id="closing-detail" class="closing-detail">0 of 30 answered correctly</p>
 
         <div class="hairline"></div>
 
-        <p class="splash__meta">ICAI Indonesia Chapter&nbsp; · &nbsp;Jakarta, Indonesia</p>
-        <p class="splash__prompt"><kbd>←</kbd> to review&nbsp; · &nbsp;<kbd>R</kbd> to restart</p>
+        <p class="splash__meta">Thank you&nbsp; · &nbsp;ICAI Indonesia Chapter&nbsp; · &nbsp;Jakarta, Indonesia</p>
+        <p class="splash__prompt"><kbd>R</kbd> to play again&nbsp; · &nbsp;<kbd>←</kbd> to review</p>
       </div>
     </section>
 

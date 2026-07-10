@@ -31,17 +31,39 @@ npx serve .
 
 ---
 
+## How it plays
+
+It's an interactive game show. For each question, enter the participant's
+choice — **click the option card, or press its letter `A`–`D` (or `1`–`4`)**.
+That locks the answer and scores it on the spot:
+
+- ✅ **Correct** → the card glows gold, "**You are RIGHT! +N points**", points added.
+- ❌ **Wrong** → the chosen card is marked burgundy with a ✗, the correct answer
+  glows gold, "**Not quite — the answer is X**".
+
+A running **score** and a **🔥 streak** show in the top corner, and the closing
+screen gives a final **score, percentage, and a themed rank** (Articled Trainee
+→ … → Grandmaster of the Ledger). Points are weighted by difficulty
+(Easy = 1, Medium = 2, Hard = 3).
+
+Prefer to just show the answer without scoring (e.g. nobody buzzed)? Press
+`Space` — it reveals the answer neutrally, no points.
+
 ## Host controls (keyboard)
 
 | Key | Action |
 |-----|--------|
-| `Space` / `Enter` | Reveal the answer (press again to advance) |
+| `A` `B` `C` `D` or `1`–`4` | Lock in the participant's answer & score it |
+| Click an option | Same as pressing its letter |
+| `Space` / `Enter` | Reveal the answer **without** scoring (press again to advance) |
 | `→` | Next question |
 | `←` | Previous question (fix a mis-click) |
-| `R` | Restart from the splash screen |
-| Click anywhere | Same as `Space` (fallback) |
+| `R` | Restart (resets the score) |
+| `M` | Mute / unmute the sound effects |
 
-There is no visible admin panel — controls stay invisible to the audience.
+Correct/wrong **sound effects** play via the browser (no files needed) — a chime
+for right, a low buzz for wrong. Toggle with `M`. There is no visible admin
+panel; controls stay invisible to the audience.
 
 ---
 
@@ -52,15 +74,16 @@ index.html
 assets/css/style.css
 assets/js/quiz-engine.js
 assets/js/questions-data.js     <- the 30 questions
-assets/img/icai-logo.png        <- PLACEHOLDER — swap in the real ICAI logo
+assets/img/                     <- drop icai-logo.png here (see note in folder)
 vercel.json
-scripts/make_placeholder_logo.py  <- regenerates the placeholder emblem
 ```
 
-### Swapping in the real logo
-Replace `assets/img/icai-logo.png` with the official ICAI logo file, keeping the
-**same filename** — no code changes needed. If the file is missing, the app
-falls back to a simple "ICAI" monogram automatically.
+### Adding the ICAI logo
+Save the official ICAI logo as **`assets/img/icai-logo.png`** — no code changes
+needed. The splash and closing screens frame it inside a light "seal" medallion,
+so a logo on a **white or transparent background looks premium on the dark
+theme**. Until the file is added, a tidy "ICAI" text seal shows in its place
+(nothing looks broken). See `assets/img/PLACE-LOGO-HERE.md` for details.
 
 ---
 
