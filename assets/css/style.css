@@ -114,7 +114,7 @@ kbd {
   height: var(--md-size);
   margin-bottom: 1.6rem;
   border-radius: 50%;
-  background: #FBF8F1;                 /* near-ivory light field */
+  background: #FFFFFF;                 /* matches the logo's white field */
   border: 2px solid var(--gold);
   box-shadow: 0 0 0 6px rgba(201,162,39,0.12),
               0 8px 30px rgba(0,0,0,0.45);
@@ -125,8 +125,8 @@ kbd {
 }
 
 .medallion__img {
-  width: 86%;
-  height: 86%;
+  width: 90%;
+  height: 90%;
   object-fit: contain;
 }
 
